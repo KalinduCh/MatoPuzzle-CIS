@@ -1,0 +1,20 @@
+.how-to-play-container {
+    text-align: center;
+  }
+  
+  .how-to-play-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .instruction-container {
+    margin-top: 20px;
+  }
+  
+  .instruction-text {
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  

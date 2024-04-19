@@ -1,17 +1,62 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SplashScreen from './components/SplashScreen';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Home from './components/Home';
+import firebase, { auth } from './firebase'; 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const Root = () => {
+  const [showSplash, setShowSplash] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading time for the splash screen
+    setTimeout(() => {
+      setShowSplash(false);
+    }, 2000); // Adjust the duration as needed
+
+    // Check authentication status
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        setAuthenticated(true);
+      } else {
+        setAuthenticated(false);
+      }
+    });
+
+    // Clean up subscription
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <Router>
+      <Routes>
+        {showSplash ? (
+          <Route path="/" element={<SplashScreen />} />
+        ) : authenticated ? (
+          <>
+            <Route path="/" element={<Home />} />
+            {/* Add more routes for authenticated users */}
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            {/* Add more routes for unauthenticated users */}
+          </>
+        )}
+      </Routes>
+    </Router>
+  );
+};
+
+ReactDOM.render(
+  <Root />,
+  document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
