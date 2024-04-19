@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SplashScreen from './components/SplashScreen';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Home from './components/Home';
-import firebase, { auth } from './firebase'; 
+import StartGame from './components/StartGame';
+import Easy from './components/Easy';
+import Hard from './components/Hard';
+import Intermediate from './components/Intermediate';
+import Timewrap from './components/Timewrap';
+
+import HowToPlay from './components/HowToPlay';
+import Leaderboard from './components/Leaderboard';
+import Profile from './components/Profile';
+
+import { auth } from './firebase'; 
 
 const Root = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -35,20 +46,19 @@ const Root = () => {
   return (
     <Router>
       <Routes>
-        {showSplash ? (
-          <Route path="/" element={<SplashScreen />} />
-        ) : authenticated ? (
-          <>
-            <Route path="/" element={<Home />} />
-            {/* Add more routes for authenticated users */}
-          </>
-        ) : (
-          <>
-            <Route path="/" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            {/* Add more routes for unauthenticated users */}
-          </>
-        )}
+        <Route path="/" element={<SplashScreen />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/start-game" element={<StartGame />} />
+        <Route path="/easy" element={<Easy />} />
+        <Route path="/intermediate" element={<Intermediate />} />
+        <Route path="/hard" element={<Hard />} />
+        <Route path="/timewrap" element={<Timewrap />} />
+        <Route path="/howtoplay" element={<HowToPlay />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/profile" element={<Profile />} />
+
       </Routes>
     </Router>
   );

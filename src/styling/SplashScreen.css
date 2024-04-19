@@ -1,54 +1,42 @@
 .splash-screen {
-  position: relative;
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: tomato; /* Tomato red background */
-  color: white; /* White text color */
-  animation: fadeIn 2s forwards; /* Increase screen time */
+  justify-content: center;
+  height: 100vh;
+  background-color: rgba(255, 99, 71, 0.8); /* Tomato red with opacity */
+
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.logo-container {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  width: 100%;
+  height: auto;
 }
 
 .game-name {
-  font-size: 2rem;
-  margin-top: 20px;
+  font-size: 36px;
+  color: tomato;
+  margin: 20px 0;
 }
 
-.tomatoes-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+.loading-text {
+  font-size: 24px;
+  color: #333;
 }
 
-.tomato {
-  position: absolute;
-  width: 30px; /* Adjust tomato size as needed */
-  height: 30px; /* Adjust tomato size as needed */
-  background-color: red; /* Tomato color */
-  border-radius: 50%;
-  opacity: 0.7;
-  animation: fall 5s linear infinite;
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(-100px) rotateZ(0deg);
+@keyframes bounceLogo {
+  0%, 100% {
+    transform: scale(1);
   }
-  100% {
-    transform: translateY(100vh) rotateZ(720deg);
+  50% {
+    transform: scale(1.2);
   }
 }

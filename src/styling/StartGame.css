@@ -1,38 +1,98 @@
-.start-game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+/* Home.css */
+
+.home-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+  background-image: url('../Images/bg tomato.jpg');
+  background-size: cover;
+  background-blend-mode: overlay;
+}
+
+.content-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.game-info {
+  margin-bottom: 50px;
+}
+
+.game-logo {
+  width: 150px;
+  height: auto;
+}
+
+.game-name {
+  font-size: 36px;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.welcome-note {
+  font-size: 24px;
+  margin-top: 10px;
+  color: #fff;
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden; /* Hide overflow text */
+  animation: typewriter 3s steps(30) infinite; /* Loop the animation */
+}
+
+@keyframes typewriter {
+  from {
+    width: 0; /* Start with zero width */
   }
-  
-  .level-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  to {
+    width: 100%; /* Gradually increase width to show full text */
   }
-  
-  .level-button {
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
-  .special-level-button {
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: tomato;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
+}
+
+.username {
+  color: tomato;
+}
+
+.navigation {
+  text-align: center;
+}
+
+.nav-link,
+.nav-button {
+  display: inline-block;
+  width: 200px;
+  padding: 15px;
+  margin: 10px;
+  background-color: tomato; /* Change button color */
+  color: #fff;
+  border: 2px solid tomato;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-button:hover {
+  background-color: #ff6347; /* Lighten button color on hover */
+}
+
+/* Special styling for Tomato Time Wrap button */
+.nav-button.tomato-time-wrap {
+  background-color: #c33; /* Change color for Tomato Time Wrap button */
+  border-color: #c33; /* Match border color with button color */
+}
+
+.nav-button.tomato-time-wrap:hover {
+  background-color: #f55; /* Lighten button color on hover */
+}

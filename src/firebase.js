@@ -1,20 +1,23 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCqD-ezi3N45iIG1Tjb33tlfOM-mJzv2C4",
-    authDomain: "matopuzzle.firebaseapp.com",
-    projectId: "matopuzzle",
-    storageBucket: "matopuzzle.appspot.com",
-    messagingSenderId: "710851604382",
-    appId: "1:710851604382:web:0f83ec9df5f4dc2f87f08f",
-    measurementId: "G-KXHLNS5D1N"
-  };
+  apiKey: "AIzaSyCqD-ezi3N45iIG1Tjb33tlfOM-mJzv2C4",
+  authDomain: "matopuzzle.firebaseapp.com",
+  projectId: "matopuzzle",
+  storageBucket: "matopuzzle.appspot.com",
+  messagingSenderId: "710851604382",
+  appId: "1:710851604382:web:0f83ec9df5f4dc2f87f08f",
+  measurementId: "G-KXHLNS5D1N"
+};
 
-firebase.initializeApp(firebaseConfig);
+// Initialize Firebase app
+const app = firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+// Export Firebase services
+export const auth = app.auth();
+export const firestore = app.firestore();
 
-export default firebase;
+// Export the Firebase app itself
+export default app;
